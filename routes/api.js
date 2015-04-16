@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var Well = require('../models/well');
+var Well = require('../models/well').Well;
+var Plant = require('../models/well').Plant;
 var Trafo = require('../models/trafo');
 
 
@@ -24,9 +25,9 @@ router.route('/wells')
   })
   // query all wells
   .get(function (req, res) {
-    Well.find(function (err, wells) {
+    Plant.find(function (err, plants) {
       if (err) res.send(err);
-      res.json(wells)
+      res.json(plants)
     });
   });
 

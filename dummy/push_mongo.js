@@ -4,10 +4,12 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/ofs');
 
 var dummy = require('./dummy');
+var dummy2 = require('./dummy2')
 
 var Well = require('../models/well').Well;
 var Plant = require('../models/well').Plant;
 
+var Event = require('./models/event')
 
 async.each(dummy.plants, function(plant) {
   var wells = [];

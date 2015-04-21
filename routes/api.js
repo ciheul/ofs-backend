@@ -4,6 +4,7 @@ var router = express.Router();
 var Well = require('../models/well').Well;
 var Plant = require('../models/well').Plant;
 var Trafo = require('../models/trafo');
+var Event = require('../models/event');
 
 
 router.get('/', function (req, res, next) {
@@ -52,5 +53,23 @@ router.route('/trafos')
     });
   });
 
+router.route('/events')
+  .post(function(req, res){
+    var event =  new Event();
+    event.message = req.body.message;
+    event.type = req.body.type;
+
+    event.save(function(err){
+      if (err) res.send(err);
+      res.json({ success: 0, message: "Event created"});
+    });
+  })
+
+  .get(function (req, res){
+    Event.find(function (err, events){
+      if (err) res.send(err);
+      res.json(events)
+    });
+  });
 
 module.exports = router;

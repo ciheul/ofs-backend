@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var eventSchema = mongoose.Schema({
   message: String,
-  type: Number,
+  type: Number
 });
 
-module.exports.Event = mongoose.model('Event', wellSchema);
+module.exports = mongoose.model('Event', eventSchema);

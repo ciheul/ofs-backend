@@ -28,6 +28,11 @@ router.route('/wells')
   .get(function (req, res) {
     Plant.find(function (err, plants) {
       if (err) res.send(err);
+      /*var plant = plants;
+        for (var i = 0; i < Things.length; i++) {
+          Things[i]
+        };*/
+        
       res.json(plants)
     });
   });
@@ -68,8 +73,14 @@ router.route('/events')
   .get(function (req, res){
     Event.find(function (err, events){
       if (err) res.send(err);
-      res.json(events)
+      var event = events[randint(0, events.length)];
+     /* console.log(event);*/
+      res.json(event)
     });
   });
 
 module.exports = router;
+var randint = function(a, b){
+  var hasil = Math.floor(Math.random() * b) + a;
+  return hasil;
+}

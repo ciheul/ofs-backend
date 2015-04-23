@@ -11,7 +11,7 @@ var Plant = require('../models/well').Plant;
 
 var Event = require('../models/event');
 
-/*async.each(dummy.plants, function(plant) {
+async.each(dummy.plants, function(plant) {
   var wells = [];
   async.each(plant.wells, function(well) {  	
     var w = new Well({
@@ -34,7 +34,7 @@ var Event = require('../models/event');
     if (err) return console.error(err);
     console.log("SUCCESS => " + p.name);
   });
-});*/
+});
 
 async.each(dummy2.events, function(event){
   var e = new Event({

@@ -10,7 +10,7 @@ var Event = require('../models/event');
 router.get('/', function (req, res, next) {
   res.json({ message: 'hooray! welcome to our api!' });
 });
-
+var counter = 0;
 
 router.route('/wells')
   // create a well
@@ -26,14 +26,15 @@ router.route('/wells')
   })
   // query all wells
   .get(function (req, res) {
-    Plant.find(function (err, plants) {
+    Plant.find({},{},{skip: counter * 8, limit: 8}, function (err, plants) {
       if (err) res.send(err);
-      /*var plant = plants;
-        for (var i = 0; i < Things.length; i++) {
-          Things[i]
-        };*/
-        
-      res.json(plants)
+      counter++;
+      if (counter > 1) {
+        counter = 0;
+      }
+      /*var plant = plants[randint(0, plants.length)];*/
+      console.log(plants);  
+      res.json(plants);
     });
   });
 
@@ -74,7 +75,7 @@ router.route('/events')
     Event.find(function (err, events){
       if (err) res.send(err);
       var event = events[randint(0, events.length)];
-     /* console.log(event);*/
+      /*console.log(event);*/
       res.json(event)
     });
   });

@@ -60,6 +60,9 @@ router.route('/ActiveAlarms')
         a.Time = strftime('%H:%M:%S', a.Timestamp);
         delete a.Timestamp;
       });
+
+     /* sleep(5000);*/
+      
       res.json(activeAlarms);
     });
   });
@@ -91,8 +94,8 @@ router.route('/HistoricalAlarms')
         delete a.Timestamp;
       });
 
-      sleep(5000);
-
+      /*sleep(5000);
+*/
       res.json(historicalAlarms);
     });
   });

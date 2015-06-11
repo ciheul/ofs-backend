@@ -1,18 +1,22 @@
 var mongoose = require('mongoose');
 
+var oilWellSchema = mongoose.Schema({
+  Name: String,
+  GroupName: String,
+  Size: Number,
+  Status: String,
+  DetailUrl: String,
+  UnitId: String,
+  AlarmStatus: String,
+  AlarmCount: Number
+});
+
 var wellSchema = mongoose.Schema({
-  name: String,
-  size: Number,
-  status: String,
-  status_name: Number,
+  Name: String,
+  // bopd: Number,
+  // brl: Number,
+  OilWells: [oilWellSchema],
 });
 
-var plantSchema = mongoose.Schema({
-  name: String,
-  bopd: Number,
-  brl: Number,
-  wells: [wellSchema],
-});
-
-module.exports.Well = mongoose.model('Well', wellSchema);
-module.exports.Plant = mongoose.model('Plant', plantSchema);
+module.exports.OilWell = mongoose.model('OilWell', oilWellSchema);
+module.exports.Well = mongoose.model('Wells', wellSchema);

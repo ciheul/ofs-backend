@@ -9,3 +9,4 @@ var substationHistoricalAlarmSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model('SubstationHistorical', substationHistoricalAlarmSchema);
+

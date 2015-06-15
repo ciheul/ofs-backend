@@ -37,6 +37,8 @@ var SubstationUnitActiveAlarm = require('../models/substation-unit-active-alarm'
 var SubstationUnitHistoricalAlarm = require('../models/substation-unit-historical-alarm');
 var SubstationEquActiveAlarm = require('../models/substation-equ-active-alarm');
 var SubstationEquHistoricalAlarm = require('../models/substation-equ-historical-alarm');
+var Srp = require('../models/srp');
+var Esp = require('../models/esp');
 var SrpActiveAlarm = require('../models/srp-active-alarm');
 var EspActiveAlarm = require('../models/esp-active-alarm');
 
@@ -108,6 +110,65 @@ async.each(substationUnit, function(){
   u.save(function (err, u) {
     if (err) return console.error(err);
     console.log("SUCCESS => " + u.Name);
+  });
+});
+
+async.each(srp, function(){
+  var srp = new srp({
+    FR601_TimeStamp: srp.FR601_TimeStamp,
+    EquipmentID: srp.EquipmentID,
+    FR601_ContactorStatus: srp.FR601_ContactorStatus,
+    SPM: srp.SPM,
+    PPRL: srp.PPRL,
+    MPRL: srp.MPRL,
+    PumpFillage: srp.PumpFillage,
+    CycleCounter: srp.CycleCounter,
+    FR601_EstProdRateBPH: srp.FR601_EstProdRateBPH,
+    FR601_Validity: srp.FR601_Validity,
+    FR602_TimeStamp: srp.Timestamp,
+    FR602_ContactorStatus: srp.FR602_ContactorStatus,
+    PMStatus: srp.PMStatus,
+    VoltageAverage: srp.VoltageAverage,
+    VoltageMax: srp.VoltageMax,
+    VoltageMin: srp.VoltageMin,
+    VoltageUnbalance: srp.VoltageUnbalance,
+    CurrentAverage: srp.CurrentAverage,
+    CurrentMax: srp.CurrentMax,
+    CurrentMin: srp.CurrentMin,
+    CurrentUnbalance: srp.CurrentUnbalance,
+    PowerAverage: srp.PowerAverage,
+    PowerMax: srp.PowerMax,
+    PowerMin: srp.PowerMin,
+    StrokeEnergyWH: srp.StrokeEnergyWH,
+    FR602_EstProdRateBPH: srp.FR602_EstProdRateBPH,
+    FR602_Validity: srp.FR602_Validity
+  });
+});
+
+async.each(esp, function(){
+  var esp = new esp({
+    TimeStamp: esp.Timestamp,
+    EquipmentID: esp.EquipmentID,
+    ContactorStatus: esp.ContactorStatus,
+    VSDStatus: esp.VSDStatus,
+    VSDStatusMessage: esp.VSDStatusMessage,
+    VSDFrequency: esp.VSDFrequency,
+    OutputPower: esp.OutputPower,
+    VoltageAverage: esp.VoltageAverage,
+    VoltageR: esp.VoltageR,
+    VoltageS: esp.VoltageS,
+    VoltageT: esp.VoltageT,
+    VoltageUnbalance: esp.VoltageT,
+    CurrentAverage: esp.CurrentAverage,
+    CurrentR: esp.CurrentR,
+    CurrentS: esp.CurrentS,
+    CurrentT: esp.CurrentT,
+    CurrentUnbalance: esp.CurrentUnbalance,
+    PumpIntakePressureBar: esp.PumpIntakePressureBar,
+    CasingHeadPressureBar: esp.CasingHeadPressureBar,
+    TubingHeadPressureBar: esp.TubingHeadPressureBar,
+    EstProdRateBPH: esp.EstProdRateBPH,
+    Validity: esp.Validity
   });
 });
 

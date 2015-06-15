@@ -6,7 +6,19 @@ var OilWell = require('../models/well').OilWell;
 var Well = require('../models/well').Well;
 var OilWellActiveAlarm = require('../models/well-active-alarm.js');
 var OilWellHistoricalAlarm = require('../models/well-historical-alarm.js');
+var Srp = require('../models/srp.js');
+var Esp = require('../models/esp.js');
+var SrpActiveAlarm = require('../models/srp-active-alarm.js');
+var Esp.ActiveAlarms = require('../models/esp-active-alarm.js');
+var Substation = require('../models/substation.js');
+var SubstationUnit = require('../models/substation-unit.js');
+var SubstationEqu = require('../models/substation-equ.js');
+var SubstationUnitActiveAlarm = require('../models/substation-unit-active-alarm.js');
+var SubstationUnitHistoricalAlarm = require('../models/substation-unit-historical-alarm.js');
+var SubstationEquActiveAlarm = require('../models/substation-equ-active-alarm.js');
+var SubstationHistoricalActiveAlarm = require('../models/substation-equ-historical-alarm.js');
 var Trafo = require('../models/trafo');
+
 
 
 router.get('/', function (req, res, next) {

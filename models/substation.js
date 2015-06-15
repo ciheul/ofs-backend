@@ -7,4 +7,4 @@ var substationSchema = mongoose.Schema({
   AlarmCount: Number
 });
 
-module.exports.Well = mongoose.model('Substation', substationSchema);
+module.exports = mongoose.model('Substation', substationSchema);

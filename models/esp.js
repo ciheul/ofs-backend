@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var espSchema = mongoose.Schema({
 	TimeStamp: String,
-	EquipmentID: null,
+	EquipmentID: String,
 	ContactorStatus: Number,
 	VSDStatus: Number,
 	VSDStatusMessage: String,
@@ -13,7 +13,7 @@ var espSchema = mongoose.Schema({
 	VoltageS: Number,
 	VoltageT: Number,
 	VoltageUnbalance: Number,
-	CurrentAverage: NumberNumber,
+	CurrentAverage: Number,
 	CurrentR: Number,
 	CurrentS: Number,
 	CurrentT: Number,

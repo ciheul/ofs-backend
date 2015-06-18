@@ -13,8 +13,10 @@ var substationHistoricalAlarm = require('./SubstationHistoricalAlarm.json');
 
 var substationEqu = require('./SubstationEqu.json');
 var substationEquActiveAlarm = require('./SubstationEquActiveAlarm.json');
-var substationUnit = require('./SubstationUnitActiveAlarm.json');
+var substationEquHistoricalAlarm = require('./SubstationEquHistoricalAlarm.json');
+var substationUnit = require('./SubstationUnit.json');
 var substationUnitActiveAlarm = require('./SubstationUnitActiveAlarm.json');
+var substationUnitHistoricalAlarm = require('./SubstationUnitHistoricalAlarm.json');
 
 var srp = require('./Srp.json');
 var srpActiveAlarm = require('./SrpActiveAlarm.json');
@@ -25,14 +27,15 @@ var espActiveAlarm = require('./EspActiveAlarm.json');
 
 var OilWell = require('../models/well').OilWell;
 var Well = require('../models/well').Well;
-var Substation = require('../models/substation').Substation
-var Srp = require('../models/srp').Srp
-var Esp = require('../models/esp').Esp
-
 var OilWellActiveAlarm = require('../models/well-active-alarm');
 var OilWellHistoricalAlarm = require('../models/well-historical-alarm');
+var Substation = require('../models/substation');
 var SubstationActiveAlarm = require('../models/substation-active-alarm');
 var SubstationHistoricalAlarm = require('../models/substation-historical-alarm');
+
+var SubstationUnit = require('../models/substation-unit').SubstationUnit;
+var Unit = require('../models/substation-unit').Unit;
+var SubstationEqu = require('../models/substation-equ');
 var SubstationUnitActiveAlarm = require('../models/substation-unit-active-alarm');
 var SubstationUnitHistoricalAlarm = require('../models/substation-unit-historical-alarm');
 var SubstationEquActiveAlarm = require('../models/substation-equ-active-alarm');
@@ -70,7 +73,35 @@ async.each(oilWellOverView, function(well) {
   });
 });
 
-async.each(substationOverview, function(){
+async.each(substationUnit, function(unit) {
+  var substationUnits = [];
+  async.each(unit.SubstationUnits, function(substationUnit) {
+    var su = new SubstationUnit({
+      Name: substationUnit.Name,
+      GroupName: substationUnit.GroupName,
+      Size: substationUnit.Size,
+      Status: substationUnit.Status,
+      DetailUrl: substationUnit.DetailUrl,
+      UnitId: substationUnit.UnitId,
+      AlarmStatus: substationUnit.AlarmStatus,
+      AlarmCount: substationUnit.AlarmCount
+    });
+    substationUnits.push(su);
+  });
+
+  var u = new Unit({
+    Name: unit.Name,
+    SubstationUnits: substationUnits
+  });
+
+  u.save(function (err, u) {
+    if (err) return console.error(err);
+    console.log("SUCCESS => " + u.Name);
+  });
+});
+
+
+async.each(substationOverview, function(substation){
   var so = new Substation({
     Name: substation.Name,
     Status: substation.Status,
@@ -84,37 +115,37 @@ async.each(substationOverview, function(){
   });
 });
 
-  
-
-async.each(substationUnit, function(){
-  var substation = [];
-  async.each(u.substation, function(substation){
-    var su = new substation({
-      Name: substation.Name,
-      GroupName: substation.GroupName,
-      Size: substation.Size,
-      Status: substation.Status,
-      DetailUrl: substation.DetailUrl,
-      UnitId: substation.UnitId,
-      AlarmStatus: substation.AlarmStatus,
-      AlarmCount: substation.AlarmCount
-    });
-    substation.push(su)
+async.each(substationEqu, function(substationEqu) {
+  var se =  new SubstationEqu({
+    TimeStamp: substationEqu.Timestamp,
+    VoltageAverage: substationEqu.VoltageAverage,
+    VoltageR: substationEqu.VoltageR,
+    VoltageS: substationEqu.VoltageS,
+    VoltageT: substationEqu.VoltageT,
+    VoltageUnbalance: substationEqu.VoltageUnbalance,
+    CurrentAverage: substationEqu.CurrentAverage,
+    CurrentR: substationEqu.CurrentR,
+    CurrentS: substationEqu.CurrentS,
+    CurrentT: substationEqu.CurrentT,
+    CurrentUnbalance: substationEqu.CurrentUnbalance,
+    PowerApparent: substationEqu.PowerApparent,
+    PowerReactive: substationEqu.PowerReactive,
+    PowerReal: substationEqu.PowerReal,
+    THDAverage: substationEqu.THDAverage,
+    THDR: substationEqu.THDR,
+    THDS: substationEqu.THDS,
+    THDT: substationEqu.THDT,
+    EnergyTotalizer: substationEqu.EnergyTotalizer
   });
 
-  var u = new SubstationUnit({
-    Name = Substation.Name,
-    substation = Substation
-  });
-
-  u.save(function (err, u) {
-    if (err) return console.error(err);
-    console.log("SUCCESS => " + u.Name);
+  se.save(function (err, se){
+    if (err) return console.error(error);
+    console.log("SUCCESS => " + se.Timestamp);
   });
 });
 
-async.each(srp, function(){
-  var srp = new srp({
+async.each(srp, function(srp){
+  var s = new Srp({
     FR601_TimeStamp: srp.FR601_TimeStamp,
     EquipmentID: srp.EquipmentID,
     FR601_ContactorStatus: srp.FR601_ContactorStatus,
@@ -143,10 +174,15 @@ async.each(srp, function(){
     FR602_EstProdRateBPH: srp.FR602_EstProdRateBPH,
     FR602_Validity: srp.FR602_Validity
   });
+
+  s.save(function (err, s){
+    if (err) return console.error(err);
+    console.log("SUCCESS => " + s.FR602_Validity);
+  });
 });
 
-async.each(esp, function(){
-  var esp = new esp({
+async.each(esp, function(esp){
+  var e = new Esp({
     TimeStamp: esp.Timestamp,
     EquipmentID: esp.EquipmentID,
     ContactorStatus: esp.ContactorStatus,
@@ -169,6 +205,11 @@ async.each(esp, function(){
     TubingHeadPressureBar: esp.TubingHeadPressureBar,
     EstProdRateBPH: esp.EstProdRateBPH,
     Validity: esp.Validity
+  });
+
+  e.save(function (err, e){
+    if (err) return console.error(err);
+    console.log("SUCCESS => " + e.Validity);
   });
 });
 
@@ -215,7 +256,7 @@ async.each(substationActiveAlarm, function(activeAlarm){
   var timestamp = new Date(dateSplit[0], dateSplit[1], dateSplit[2],
                            timeSplit[0], timeSplit[1], timeSplit[2], 0);
 
-  var saa = new substationActiveAlarm({
+  var saa = new SubstationActiveAlarm({
     Timestamp: timestamp,
     Equipment: activeAlarm.Equipment,
     Message: activeAlarm.Message
@@ -228,8 +269,8 @@ async.each(substationActiveAlarm, function(activeAlarm){
 });
 
 async.each(substationHistoricalAlarm, function(historicalAlarm){
-  var dateSplit = activeAlarm.Date.split('-');
-  var timeSplit = activeAlarm.Time.split(':');
+  var dateSplit = historicalAlarm.Date.split('-');
+  var timeSplit = historicalAlarm.Time.split(':');
   var timestamp = new Date(dateSplit[0], dateSplit[1], dateSplit[2],
                             timeSplit[0], timeSplit[1], timeSplit[2],0);
 
@@ -251,7 +292,7 @@ async.each(substationUnitActiveAlarm, function(activeAlarm){
   var timestamp = new Date(dateSplit[0], dateSplit[1], dateSplit[2],
                            timeSplit[0], timeSplit[1], timeSplit[2], 0);
 
-  var suaa = new substationUnitActiveAlarm({
+  var suaa = new SubstationUnitActiveAlarm({
     Timestamp: timestamp,
     Equipment: activeAlarm.Equipment,
     Message: activeAlarm.Message
@@ -264,12 +305,12 @@ async.each(substationUnitActiveAlarm, function(activeAlarm){
 });
 
 async.each(substationUnitHistoricalAlarm, function(historicalAlarm){
-  var dateSplit = activeAlarm.Date.split('-');
-  var timeSplit = activeAlarm.Time.split(':');
+  var dateSplit = historicalAlarm.Date.split('-');
+  var timeSplit = historicalAlarm.Time.split(':');
   var timestamp = new Date(dateSplit[0], dateSplit[1], dateSplit[2],
                             timeSplit[0], timeSplit[1], timeSplit[2],0);
 
-  var suha = new SubstationHistoricalAlarm({
+  var suha = new SubstationUnitHistoricalAlarm({
     Timestamp: timestamp,
     Equipment: historicalAlarm.Equipment,
     Message: historicalAlarm.Message
@@ -287,7 +328,7 @@ async.each(substationEquActiveAlarm, function(activeAlarm){
   var timestamp = new Date(dateSplit[0], dateSplit[1], dateSplit[2],
                            timeSplit[0], timeSplit[1], timeSplit[2], 0);
 
-  var seaa = new substationEquActiveAlarm({
+  var seaa = new SubstationEquActiveAlarm({
     Timestamp: timestamp,
     Equipment: activeAlarm.Equipment,
     Message: activeAlarm.Message
@@ -300,8 +341,8 @@ async.each(substationEquActiveAlarm, function(activeAlarm){
 });
 
 async.each(substationEquHistoricalAlarm, function(historicalAlarm){
-  var dateSplit = activeAlarm.Date.split('-');
-  var timeSplit = activeAlarm.Time.split(':');
+  var dateSplit = historicalAlarm.Date.split('-');
+  var timeSplit = historicalAlarm.Time.split(':');
   var timestamp = new Date(dateSplit[0], dateSplit[1], dateSplit[2],
                             timeSplit[0], timeSplit[1], timeSplit[2],0);
 
@@ -323,7 +364,7 @@ async.each(srpActiveAlarm, function(activeAlarm){
   var timestamp = new Date(dateSplit[0], dateSplit[1], dateSplit[2],
                            timeSplit[0], timeSplit[1], timeSplit[2], 0);
 
-  var srpaa = new srpActiveAlarm({
+  var srpaa = new SrpActiveAlarm({
     Timestamp: timestamp,
     Equipment: activeAlarm.Equipment,
     Message: activeAlarm.Message
@@ -341,7 +382,7 @@ async.each(espActiveAlarm, function(activeAlarm){
   var timestamp = new Date(dateSplit[0], dateSplit[1], dateSplit[2],
                            timeSplit[0], timeSplit[1], timeSplit[2], 0);
 
-  var espaa = new espActiveAlarm({
+  var espaa = new EspActiveAlarm({
     Timestamp: timestamp,
     Equipment: activeAlarm.Equipment,
     Message: activeAlarm.Message

@@ -8,4 +8,4 @@ var substationUnitActiveAlarmSchema = mongoose.Schema({
   Message: String
 });
 
-module.exports = mongoose.model('SubstationUnitActiveAlarms', substationUnitActiveAlarmSchema;
+module.exports = mongoose.model('SubstationUnitActiveAlarms', substationUnitActiveAlarmSchema);

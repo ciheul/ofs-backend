@@ -6,17 +6,26 @@ var OilWell = require('../models/well').OilWell;
 var Well = require('../models/well').Well;
 var OilWellActiveAlarm = require('../models/well-active-alarm.js');
 var OilWellHistoricalAlarm = require('../models/well-historical-alarm.js');
+
 var Srp = require('../models/srp.js');
 var Esp = require('../models/esp.js');
 var SrpActiveAlarm = require('../models/srp-active-alarm.js');
-var Esp.ActiveAlarms = require('../models/esp-active-alarm.js');
+var EspActiveAlarm = require('../models/esp-active-alarm.js');
+
 var Substation = require('../models/substation.js');
-var SubstationUnit = require('../models/substation-unit.js');
-var SubstationEqu = require('../models/substation-equ.js');
+var SubstationActiveAlarm = require('../models/substation-active-alarm.js');
+var SubstationHistoricalAlarm = require('../models/substation-historical-alarm.js');
+
+var SubstationUnit = require('../models/substation-unit.js').SubstationUnit;
+var Unit = require('../models/substation-unit.js').Unit;
+
 var SubstationUnitActiveAlarm = require('../models/substation-unit-active-alarm.js');
 var SubstationUnitHistoricalAlarm = require('../models/substation-unit-historical-alarm.js');
+
+var SubstationEqu = require('../models/substation-equ.js');
 var SubstationEquActiveAlarm = require('../models/substation-equ-active-alarm.js');
-var SubstationHistoricalActiveAlarm = require('../models/substation-equ-historical-alarm.js');
+var SubstationEquHistoricalAlarm = require('../models/substation-equ-historical-alarm.js');
+
 var Trafo = require('../models/trafo');
 
 
@@ -34,7 +43,6 @@ router.route('/OilWellOverView')
       res.json(wells);
     });
   });
-
 
 // router.route('/OilWellOverView')
 //   // create a well
@@ -79,7 +87,6 @@ router.route('/ActiveAlarms')
     });
   });
 
-
 router.route('/HistoricalAlarms')
   .get(function(req, res) {
     var conditions = {};
@@ -111,6 +118,7 @@ router.route('/HistoricalAlarms')
       res.json(historicalAlarms);
     });
   });
+
 
 
 router.route('/trafos')
@@ -155,6 +163,111 @@ router.route('/events')
     });
   });
 
+router.route('/SubstationOverview')
+  .get(function(req, res){
+    Substation.find(function(err, substation){
+      if (err) res.send(err);
+      res.json(substation);
+    });
+  });
+
+router.route('/SubstationOverview/ActiveAlarms')
+  .get(function(req, res){
+    SubstationActiveAlarm.find(function(err, activeAlarms){
+      if(err) res.send(err);
+      activeAlarms.map(function(a){
+        a.Date = strftime('%Y-%m-%d', a.Timestamp);
+        a.Time = strftime('%H:%M:%S', a.Timestamp);
+        delete a.Timestamp;
+      });
+
+      res.json(activeAlarms);
+    });
+  });
+
+router.route('/SubstationOverview/HistoricalAlarms')
+  .get(function(req, res) {
+    var conditions = {};
+    if (req.query.dtfrom !== undefined && req.query.dtto !== undefined) {
+      // get start date
+      var timestampFrom = buildTimestamp(req.query.dtfrom);
+
+      // get end date
+      var temp = buildTimestamp(req.query.dtto);
+      var timestampTo = new Date(temp.setDate(temp.getDate() + 1));
+
+      // conditions to query to MongoDB using time range
+      var conditions = {
+        Timestamp: { $gte: timestampFrom, $lte: timestampTo }
+      };
+    }
+
+    SubstationHistoricalAlarm.find(conditions, function(err, historicalAlarms) {
+      if (err) res.send(err);
+      historicalAlarms.map(function(a) {
+        // convert 'Date object' to Date and Time in string type
+        a.Date = strftime('%Y-%m-%d', a.Timestamp);
+        a.Time = strftime('%H:%M:%S', a.Timestamp);
+        delete a.Timestamp;
+      });
+
+      /*sleep(5000);
+*/
+      res.json(historicalAlarms);
+    });
+  });
+
+router.route('/SubstationOverview/SubstationEqu')
+  .get(function(req, res){
+    SubstationEqu.find(function(err, substationEqu){
+      if (err) res.send(err);
+      res.json(substationEqu);
+    });
+  });
+
+router.route('/srp/?UnitId=EPTJ\OW.T150')
+  .get(function(req, res){
+    Srp.find(function(err, srp){
+      if (err) res.send(err);
+      res.json(srp);
+    });
+  });
+
+router.route('/srp/?UnitId=EPTJ\OW.T150/ActiveAlarms')
+  .get(function(req, res){
+    SrpActiveAlarm.find(function(err, activeAlarms){
+      if(err) res.send(err);
+      activeAlarms.map(function(a){
+        a.Date = strftime('%Y-%m-%d', a.Timestamp);
+        a.Time = strftime('%H:%M:%S', a.Timestamp);
+        delete a.Timestamp;
+      });
+
+      res.json(activeAlarms);
+    });
+  });
+
+router.route('/esp/?UnitId=EPTJ\OW.T175')
+  .get(function(req, res){
+    Esp.find(function(err, esp){
+      if (err) res.send(err);
+      res.json(esp);
+    });
+  });
+
+router.route('/esp/?UnitId=EPTJ\OW.T175/ActiveAlarms')
+  .get(function(req, res){
+    EspActiveAlarm.find(function(err, activeAlarms){
+      if(err) res.send(err);
+      activeAlarms.map(function(a){
+        a.Date = strftime('%Y-%m-%d', a.Timestamp);
+        a.Time = strftime('%H:%M:%S', a.Timestamp);
+        delete a.Timestamp;
+      });
+
+      res.json(activeAlarms);
+    });
+  });  
 
 /**
  * Generate random between two integer numbers.

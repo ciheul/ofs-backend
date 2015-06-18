@@ -1,20 +1,25 @@
 var mongoose = require('mongoose');
 
-var substationUnitSchema = mongoose.Schema({
-	Name: String,
-	GroupName: String,
-	Size: Number,
-	Status: String,
-	DetailUrl: String,
-	UnitId: String,
-	AlarmStatus: Number,
-	AlarmCount: Number
+var substationEquSchema = mongoose.Schema({
+	TimeStamp: String,
+	VoltageAverage: Number,
+	VoltageR: Number,
+	VoltageS: Number,
+	VoltageT: Number,
+	VoltageUnbalance: Number,
+	CurrentAverage: Number,
+	CurrentR: Number,
+	CurrentS: Number,
+	CurrentT: Number,
+	CurrentUnbalance: Number,
+	PowerApparent: Number,
+	PowerReactive: Number,
+	PowerReal: Number,
+	THDAverage: Number,
+	THDR: Number,
+	THDS: Number,
+	THDT: Number,
+	EnergyTotalizer: Number 
 });
 
-var subSchema = mongoose.Schema({
-  Name: String,
-  Substation: [substationUnitSchema],
-});
-
-module.exports.unit = mongoose.model('substationUnitSchema', oilWellSchema);
-module.exports.sub = mongoose.model('subSchema', wellSchema);
+module.exports = mongoose.model('substationEqu', substationEquSchema);

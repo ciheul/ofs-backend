@@ -1,1 +1,345 @@
-[{"Name":"ST-P.PLANT","OilWells":[{"Name":"T.02","GroupName":"ST-P.PLANT","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T02","AlarmStatus":"","AlarmCount":1},{"Name":"T.117","GroupName":"ST-P.PLANT","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T117","AlarmStatus":"","AlarmCount":1},{"Name":"T.122","GroupName":"ST-P.PLANT","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T122","AlarmStatus":"","AlarmCount":1},{"Name":"T.129","GroupName":"ST-P.PLANT","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T129","AlarmStatus":"","AlarmCount":1},{"Name":"T.130","GroupName":"ST-P.PLANT","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T130","AlarmStatus":"","AlarmCount":1},{"Name":"T.72","GroupName":"ST-P.PLANT","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T72","AlarmStatus":"","AlarmCount":1},{"Name":"T.87R","GroupName":"ST-P.PLANT","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T87R","AlarmStatus":"","AlarmCount":1}]},{"Name":"ST-VIIIC","OilWells":[{"Name":"T.100","GroupName":"ST-VIIIC","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T100","AlarmStatus":"","AlarmCount":1},{"Name":"T.12","GroupName":"ST-VIIIC","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T12","AlarmStatus":"","AlarmCount":1},{"Name":"T.142","GroupName":"ST-VIIIC","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T142","AlarmStatus":"","AlarmCount":1},{"Name":"T.157","GroupName":"ST-VIIIC","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T157","AlarmStatus":"","AlarmCount":1},{"Name":"T.166","GroupName":"ST-VIIIC","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T166","AlarmStatus":"","AlarmCount":1},{"Name":"T.37","GroupName":"ST-VIIIC","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T37","AlarmStatus":"","AlarmCount":1},{"Name":"T.53","GroupName":"ST-VIIIC","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T53","AlarmStatus":"","AlarmCount":1},{"Name":"T.73","GroupName":"ST-VIIIC","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T73","AlarmStatus":"","AlarmCount":1}]},{"Name":"ST-VIIIA","OilWells":[{"Name":"T.116","GroupName":"ST-VIIIA","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T116","AlarmStatus":"","AlarmCount":1},{"Name":"T.139","GroupName":"ST-VIIIA","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T139","AlarmStatus":"","AlarmCount":1},{"Name":"T.140","GroupName":"ST-VIIIA","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T140","AlarmStatus":"","AlarmCount":1},{"Name":"T.144","GroupName":"ST-VIIIA","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T144","AlarmStatus":"","AlarmCount":1},{"Name":"T.158","GroupName":"ST-VIIIA","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T158","AlarmStatus":"","AlarmCount":1},{"Name":"T.165","GroupName":"ST-VIIIA","Size":0.0,"Status":"grey","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T165","AlarmStatus":"","AlarmCount":1}]},{"Name":"POC-04-2015","OilWells":[{"Name":"T.150","GroupName":"POC-04-2015","Size":0.0,"Status":"green","DetailUrl":"api/srpdetail","UnitId":"EPTJ\\OW.T150","AlarmStatus":"","AlarmCount":0},{"Name":"T.175","GroupName":"POC-04-2015","Size":0.0,"Status":"green","DetailUrl":"api/espdetail","UnitId":"EPTJ\\OW.T175","AlarmStatus":"","AlarmCount":0}]}]
+[
+
+{
+
+    "Name": "ST-P.PLANT",
+    "_id": "55827824f787338d0daa7ffb",
+    "__v": 0,
+    "OilWells": 
+
+[
+
+{
+
+    "_id": "55827824f787338d0daa7ff4",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T02",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-P.PLANT",
+    "Name": "T.02"
+
+},
+{
+
+    "_id": "55827824f787338d0daa7ff5",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T117",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-P.PLANT",
+    "Name": "T.117"
+
+},
+{
+
+    "_id": "55827824f787338d0daa7ff6",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T122",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-P.PLANT",
+    "Name": "T.122"
+
+},
+{
+
+    "_id": "55827824f787338d0daa7ff7",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T129",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-P.PLANT",
+    "Name": "T.129"
+
+},
+{
+
+    "_id": "55827824f787338d0daa7ff8",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T130",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-P.PLANT",
+    "Name": "T.130"
+
+},
+{
+
+    "_id": "55827824f787338d0daa7ff9",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T72",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-P.PLANT",
+    "Name": "T.72"
+
+},
+
+        {
+            "_id": "55827824f787338d0daa7ffa",
+            "AlarmCount": 1,
+            "AlarmStatus": "",
+            "UnitId": "EPTJ\\OW.T87R",
+            "DetailUrl": "api/srpdetail",
+            "Status": "grey",
+            "Size": 0,
+            "GroupName": "ST-P.PLANT",
+            "Name": "T.87R"
+        }
+    ]
+
+},
+{
+
+    "Name": "ST-VIIIC",
+    "_id": "55827824f787338d0daa8004",
+    "__v": 0,
+    "OilWells": 
+
+[
+
+{
+
+    "_id": "55827824f787338d0daa7ffc",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T100",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIC",
+    "Name": "T.100"
+
+},
+{
+
+    "_id": "55827824f787338d0daa7ffd",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T12",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIC",
+    "Name": "T.12"
+
+},
+{
+
+    "_id": "55827824f787338d0daa7ffe",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T142",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIC",
+    "Name": "T.142"
+
+},
+{
+
+    "_id": "55827824f787338d0daa7fff",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T157",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIC",
+    "Name": "T.157"
+
+},
+{
+
+    "_id": "55827824f787338d0daa8000",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T166",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIC",
+    "Name": "T.166"
+
+},
+{
+
+    "_id": "55827824f787338d0daa8001",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T37",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIC",
+    "Name": "T.37"
+
+},
+{
+
+    "_id": "55827824f787338d0daa8002",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T53",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIC",
+    "Name": "T.53"
+
+},
+
+        {
+            "_id": "55827824f787338d0daa8003",
+            "AlarmCount": 1,
+            "AlarmStatus": "",
+            "UnitId": "EPTJ\\OW.T73",
+            "DetailUrl": "api/srpdetail",
+            "Status": "grey",
+            "Size": 0,
+            "GroupName": "ST-VIIIC",
+            "Name": "T.73"
+        }
+    ]
+
+},
+{
+
+    "Name": "ST-VIIIA",
+    "_id": "55827824f787338d0daa800b",
+    "__v": 0,
+    "OilWells": 
+
+[
+
+{
+
+    "_id": "55827824f787338d0daa8005",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T116",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIA",
+    "Name": "T.116"
+
+},
+{
+
+    "_id": "55827824f787338d0daa8006",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T139",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIA",
+    "Name": "T.139"
+
+},
+{
+
+    "_id": "55827824f787338d0daa8007",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T140",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIA",
+    "Name": "T.140"
+
+},
+{
+
+    "_id": "55827824f787338d0daa8008",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T144",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIA",
+    "Name": "T.144"
+
+},
+{
+
+    "_id": "55827824f787338d0daa8009",
+    "AlarmCount": 1,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T158",
+    "DetailUrl": "api/srpdetail",
+    "Status": "grey",
+    "Size": 0,
+    "GroupName": "ST-VIIIA",
+    "Name": "T.158"
+
+},
+
+            {
+                "_id": "55827824f787338d0daa800a",
+                "AlarmCount": 1,
+                "AlarmStatus": "",
+                "UnitId": "EPTJ\\OW.T165",
+                "DetailUrl": "api/srpdetail",
+                "Status": "grey",
+                "Size": 0,
+                "GroupName": "ST-VIIIA",
+                "Name": "T.165"
+            }
+        ]
+},
+{
+
+    "Name": "POC-04-2015",
+    "_id": "55827824f787338d0daa800e",
+    "__v": 0,
+    "OilWells": 
+
+[
+
+{
+
+    "_id": "55827824f787338d0daa800c",
+    "AlarmCount": 0,
+    "AlarmStatus": "",
+    "UnitId": "EPTJ\\OW.T150",
+    "DetailUrl": "api/srpdetail",
+    "Status": "green",
+    "Size": 0,
+    "GroupName": "POC-04-2015",
+    "Name": "T.150"
+
+},
+
+        {
+            "_id": "55827824f787338d0daa800d",
+            "AlarmCount": 0,
+            "AlarmStatus": "",
+            "UnitId": "EPTJ\\OW.T175",
+            "DetailUrl": "api/espdetail",
+            "Status": "green",
+            "Size": 0,
+            "GroupName": "POC-04-2015",
+            "Name": "T.175"
+        }
+    ]
+
+}
+]

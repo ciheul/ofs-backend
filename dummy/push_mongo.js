@@ -73,7 +73,7 @@ async.each(oilWellOverView, function(well) {
   });
 });
 
-async.each(substationUnit, function(unit) {
+/*async.each(substationUnit, function(unit) {
   var substationUnits = [];
   async.each(unit.SubstationUnits, function(substationUnit) {
     var su = new SubstationUnit({
@@ -98,7 +98,7 @@ async.each(substationUnit, function(unit) {
     if (err) return console.error(err);
     console.log("SUCCESS => " + u.Name);
   });
-});
+});*/
 
 
 async.each(substationOverview, function(substation){

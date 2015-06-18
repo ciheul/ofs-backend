@@ -225,6 +225,119 @@ router.route('/SubstationOverview/SubstationEqu')
     });
   });
 
+router.route('/SubstationOverview/SubstationEqu/ActiveAlarms')
+  .get(function(req, res){
+    SubstationEquActiveAlarm.find(function(err, activeAlarms){
+      if(err) res.send(err);
+      activeAlarms.map(function(a){
+        a.Date = strftime('%Y-%m-%d', a.Timestamp);
+        a.Time = strftime('%H:%M:%S', a.Timestamp);
+        delete a.Timestamp;
+      });
+
+      res.json(activeAlarms);
+    });
+  });
+
+router.route('/SubstationOverview/SubstationEqu/HistoricalAlarms')
+  .get(function(req, res) {
+    var conditions = {};
+    if (req.query.dtfrom !== undefined && req.query.dtto !== undefined) {
+      // get start date
+      var timestampFrom = buildTimestamp(req.query.dtfrom);
+
+      // get end date
+      var temp = buildTimestamp(req.query.dtto);
+      var timestampTo = new Date(temp.setDate(temp.getDate() + 1));
+
+      // conditions to query to MongoDB using time range
+      var conditions = {
+        Timestamp: { $gte: timestampFrom, $lte: timestampTo }
+      };
+    }
+
+
+    SubstationEquHistoricalAlarm.find(conditions, function(err, historicalAlarms) {
+      if (err) res.send(err);
+      historicalAlarms.map(function(a) {
+        // convert 'Date object' to Date and Time in string type
+        a.Date = strftime('%Y-%m-%d', a.Timestamp);
+        a.Time = strftime('%H:%M:%S', a.Timestamp);
+        delete a.Timestamp;
+      });
+
+      /*sleep(5000);*/
+      res.json(historicalAlarms);
+    });
+});
+
+
+
+router.route('/srp/?UnitId=EPTJ\OW.T150')
+  .get(function(req, res){
+    Srp.find(function(err, srp){
+      if (err) res.send(err);
+      res.json(srp);
+    });
+  });
+
+
+router.route('/SubstationOverview/SubstationUnit')
+  .get(function(req, res){
+    SubstationUnit.find(function(err, substationEqu){
+      if (err) res.send(err);
+      res.json(substationEqu);
+    });
+  });
+
+router.route('/SubstationOverview/SubstationUnit/ActiveAlarms')
+  .get(function(req, res){
+    SubstationUnitActiveAlarm.find(function(err, activeAlarms){
+      if(err) res.send(err);
+      activeAlarms.map(function(a){
+        a.Date = strftime('%Y-%m-%d', a.Timestamp);
+        a.Time = strftime('%H:%M:%S', a.Timestamp);
+        delete a.Timestamp;
+      });
+
+      res.json(activeAlarms);
+    });
+  });
+
+router.route('/SubstationOverview/SubstationUnit/HistoricalAlarms')
+  .get(function(req, res) {
+    var conditions = {};
+    if (req.query.dtfrom !== undefined && req.query.dtto !== undefined) {
+      // get start date
+      var timestampFrom = buildTimestamp(req.query.dtfrom);
+
+      // get end date
+      var temp = buildTimestamp(req.query.dtto);
+      var timestampTo = new Date(temp.setDate(temp.getDate() + 1));
+
+      // conditions to query to MongoDB using time range
+      var conditions = {
+        Timestamp: { $gte: timestampFrom, $lte: timestampTo }
+      };
+    }
+
+
+    SubstationUnitHistoricalAlarm.find(conditions, function(err, historicalAlarms) {
+      if (err) res.send(err);
+      historicalAlarms.map(function(a) {
+        // convert 'Date object' to Date and Time in string type
+        a.Date = strftime('%Y-%m-%d', a.Timestamp);
+        a.Time = strftime('%H:%M:%S', a.Timestamp);
+        delete a.Timestamp;
+      });
+
+      /*sleep(5000);*/
+      res.json(historicalAlarms);
+    });
+});
+
+
+
 router.route('/srp/?UnitId=EPTJ\OW.T150')
   .get(function(req, res){
     Srp.find(function(err, srp){

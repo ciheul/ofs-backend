@@ -44,6 +44,14 @@ router.route('/OilWellOverView')
     });
   });
 
+router.route('/SubstationOverview/SubstationUnit')
+  .get(function(req, res){
+    Unit.find(function(err, units){
+      if (err) res.send(err);
+      res.json(units);
+    });
+  });
+
 // router.route('/OilWellOverView')
 //   // create a well
 //   .post(function (req, res) {
@@ -282,13 +290,7 @@ router.route('/srp/?UnitId=EPTJ\OW.T150')
   });
 
 
-router.route('/SubstationOverview/SubstationUnit')
-  .get(function(req, res){
-    SubstationUnit.find(function(err, substationEqu){
-      if (err) res.send(err);
-      res.json(substationEqu);
-    });
-  });
+
 
 router.route('/SubstationOverview/SubstationUnit/ActiveAlarms')
   .get(function(req, res){

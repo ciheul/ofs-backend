@@ -14,7 +14,7 @@ var substationHistoricalAlarm = require('./SubstationHistoricalAlarm.json');
 var substationEqu = require('./SubstationEqu.json');
 var substationEquActiveAlarm = require('./SubstationEquActiveAlarm.json');
 var substationEquHistoricalAlarm = require('./SubstationEquHistoricalAlarm.json');
-var substationUnit = require('./SubstationUnit.json');
+var substationUnitOverview = require('./SubstationUnit.json');
 var substationUnitActiveAlarm = require('./SubstationUnitActiveAlarm.json');
 var substationUnitHistoricalAlarm = require('./SubstationUnitHistoricalAlarm.json');
 
@@ -73,7 +73,7 @@ async.each(oilWellOverView, function(well) {
   });
 });
 
-/*async.each(substationUnit, function(unit) {
+async.each(substationUnitOverview, function(unit) {
   var substationUnits = [];
   async.each(unit.SubstationUnits, function(substationUnit) {
     var su = new SubstationUnit({
@@ -98,7 +98,7 @@ async.each(oilWellOverView, function(well) {
     if (err) return console.error(err);
     console.log("SUCCESS => " + u.Name);
   });
-});*/
+});
 
 
 async.each(substationOverview, function(substation){

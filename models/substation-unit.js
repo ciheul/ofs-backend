@@ -11,10 +11,10 @@ var substationUnitSchema = mongoose.Schema({
 	AlarmCount: Number
 });
 
-var subSchema = mongoose.Schema({
+var unitSchema = mongoose.Schema({
   Name: String,
-  Substation: [substationUnitSchema],
+  SubstationUnits: [substationUnitSchema],
 });
 
-module.exports.unit = mongoose.model('SubstationUnit', substationUnitSchema);
-module.exports.sub = mongoose.model('Units', subSchema);
+module.exports.SubstationUnit = mongoose.model('SubstationUnit', substationUnitSchema);
+module.exports.Unit = mongoose.model('Units', unitSchema);

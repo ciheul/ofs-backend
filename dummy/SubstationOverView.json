@@ -1,32 +1,52 @@
 [
 	{
 		"Name": "ST-P.PLANT",
-		"Status": "grey",
-		"DetailUrl": "st-detail",
-		"AlarmCount": 0
+		"Substation": [ 
+			{
+				"Status": "grey",
+				"DetailUrl": "st-detail",
+				"AlarmCount": 0
+			}
+		]
 	},
 	{
 		"Name": "ST-V",
-		"Status": "yellow",
-		"DetailUrl": "st-detail",
-		"AlarmCount": 1
+		"Substation": [
+			{
+				"Status": "yellow",
+				"DetailUrl": "st-detail",
+				"AlarmCount": 1
+			}
+		]
 	},
 	{
 		"Name": "ST-VIIIA",
-		"Status": "grey",
-		"DetailUrl": "st-detail",
-		"AlarmCount": 0
+		"Substation": [
+			{
+				"Status": "grey",
+				"DetailUrl": "st-detail",
+				"AlarmCount": 0
+			}
+		]
 	},
 	{
 		"Name": "ST-VIIIC",
-		"Status": "grey",
-		"DetailUrl": "st-detail",
-		"AlarmCount": 0
+		"Substation": [
+			{
+				"Status": "grey",
+				"DetailUrl": "st-detail",
+				"AlarmCount": 0
+			}
+		]
 	},
 	{
 		"Name": "ST-XC",
-		"Status": "grey",
-		"DetailUrl": "st-detail",
-		"AlarmCount": 0
+		"Substation": [
+			{
+				"Status": "grey",
+				"DetailUrl": "st-detail",
+				"AlarmCount": 0
+			}
+		]
 	}
 ]

@@ -19,7 +19,8 @@ var Well = require('../models/well').Well;
 var Srp = require('../models/srp');
 var Esp = require('../models/esp');
 
-var Substation = require('../models/substation');
+var Substation = require('../models/substation').Substation;
+var Detail = require('../models/substation').Detail;
 var SubstationUnit = require('../models/substation-unit').SubstationUnit;
 var Unit = require('../models/substation-unit').Unit;
 var SubstationEqu = require('../models/substation-equ');
@@ -55,6 +56,28 @@ async.each(oilWellOverView, function(well) {
   });
 });
 
+async.each(substationOverview, function(detail) {
+  var substations = [];
+  async.each(detail.Substations, function(substation) {
+    var so = new Substation({
+      Name: substation.Name,
+      Status: substation.Status,
+      DetailUrl: substation.DetailUrl,
+      AlarmCount: substation.AlarmCount
+    });
+    substations.push(so);
+  });
+  
+  var o = new Detail({
+    Name: detail.Name,
+    Substations : substations
+  })
+
+  o.save(function (err, o) {
+    if (err) return console.error(err);
+    console.log("SUCCESS => " + o.Name);
+  });
+});
 
 async.each(srp, function(srp){
   var s = new Srp({
@@ -153,22 +176,6 @@ async.each(substationUnitOverview, function(unit) {
     console.log("SUCCESS => " + u.Name);
   });
 });
-
-
-async.each(substationOverview, function(substation){
-  var so = new Substation({
-    Name: substation.Name,
-    Status: substation.Status,
-    DetailUrl: substation.DetailUrl,
-    AlarmCount: substation.AlarmCount
-  });
-
-  so.save(function (err, so) {
-    if (err) return console.error(err);
-    console.log("SUCCESS => " + so.Name);
-  });
-});
-
 
 async.each(substationEqu, function(substationEqu) {
   var se =  new SubstationEqu({

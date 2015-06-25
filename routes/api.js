@@ -8,11 +8,11 @@ var Well = require('../models/well').Well;
 var Srp = require('../models/srp.js');
 var Esp = require('../models/esp.js');
 
-var Substation = require('../models/substation.js');
+var Substation = require('../models/substation').Substation;
+var Detail = require('../models/substation').Detail;
 var SubstationUnit = require('../models/substation-unit.js').SubstationUnit;
 var Unit = require('../models/substation-unit.js').Unit;
 var SubstationEqu = require('../models/substation-equ.js');
-
 var ActiveAlarm = require('../models/active-alarm.js');
 var HistoricalAlarm = require('../models/historical-alarm.js');
 
@@ -57,6 +57,13 @@ router.route('/EspDetail')
 
 
 // #################### SUBSTATION OVERVIEW #################### 
+router.route('/SubstationOverview/SubstationEqu')
+  .get(function(req, res){
+    SubstationEqu.find(function(err, substationEqu){
+      if (err) res.send(err);
+      res.json(substationEqu);
+    });
+  });
 
 router.route('/SubstationOverview/SubstationUnit')
   .get(function(req, res){
@@ -69,9 +76,9 @@ router.route('/SubstationOverview/SubstationUnit')
 
 router.route('/SubstationOverview')
   .get(function(req, res){
-    Substation.find(function(err, substation){
+    Detail.find(function(err, details){
       if (err) res.send(err);
-      res.json(substation);
+      res.json(details);
     });
   });
 

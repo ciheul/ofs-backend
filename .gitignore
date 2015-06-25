@@ -1,3 +1,4 @@
 node_modules/
 bower_components/
 *.rdb
+npm-debug.log

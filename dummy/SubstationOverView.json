@@ -1,8 +1,9 @@
 [
 	{
 		"Name": "ST-P.PLANT",
-		"Substation": [ 
+		"Substations": [ 
 			{
+				"Name": "ST-P.PLANT",
 				"Status": "grey",
 				"DetailUrl": "st-detail",
 				"AlarmCount": 0
@@ -11,8 +12,9 @@
 	},
 	{
 		"Name": "ST-V",
-		"Substation": [
+		"Substations": [
 			{
+				"Name": "ST-V",
 				"Status": "yellow",
 				"DetailUrl": "st-detail",
 				"AlarmCount": 1
@@ -21,8 +23,9 @@
 	},
 	{
 		"Name": "ST-VIIIA",
-		"Substation": [
+		"Substations": [
 			{
+				"Name": "ST-VIIIA",
 				"Status": "grey",
 				"DetailUrl": "st-detail",
 				"AlarmCount": 0
@@ -31,8 +34,9 @@
 	},
 	{
 		"Name": "ST-VIIIC",
-		"Substation": [
+		"Substations": [
 			{
+				"Name": "ST-VIIIC",
 				"Status": "grey",
 				"DetailUrl": "st-detail",
 				"AlarmCount": 0
@@ -41,8 +45,53 @@
 	},
 	{
 		"Name": "ST-XC",
-		"Substation": [
+		"Substations": [
 			{
+				"Name": "ST-XC",
+				"Status": "grey",
+				"DetailUrl": "st-detail",
+				"AlarmCount": 0
+			}
+		]
+	},
+	{
+		"Name": "ST-XC",
+		"Substations": [
+			{
+				"Name": "ST-XC",
+				"Status": "grey",
+				"DetailUrl": "st-detail",
+				"AlarmCount": 0
+			}
+		]
+	},
+	{
+		"Name": "ST-XC",
+		"Substations": [
+			{
+				"Name": "ST-XC",
+				"Status": "grey",
+				"DetailUrl": "st-detail",
+				"AlarmCount": 0
+			}
+		]
+	},
+	{
+		"Name": "ST-XC",
+		"Substations": [
+			{
+				"Name": "ST-XC",
+				"Status": "grey",
+				"DetailUrl": "st-detail",
+				"AlarmCount": 0
+			}
+		]
+	},
+	{
+		"Name": "ST-XC",
+		"Substations": [
+			{
+				"Name": "ST-XC",
 				"Status": "grey",
 				"DetailUrl": "st-detail",
 				"AlarmCount": 0

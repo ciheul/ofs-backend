@@ -56,29 +56,6 @@ async.each(oilWellOverView, function(well) {
   });
 });
 
-async.each(substationOverview, function(detail) {
-  var substations = [];
-  async.each(detail.Substations, function(substation) {
-    var so = new Substation({
-      Name: substation.Name,
-      Status: substation.Status,
-      DetailUrl: substation.DetailUrl,
-      AlarmCount: substation.AlarmCount
-    });
-    substations.push(so);
-  });
-  
-  var o = new Detail({
-    Name: detail.Name,
-    Substations : substations
-  })
-
-  o.save(function (err, o) {
-    if (err) return console.error(err);
-    console.log("SUCCESS => " + o.Name);
-  });
-});
-
 async.each(srp, function(srp){
   var s = new Srp({
     FR601_TimeStamp: srp.FR601_TimeStamp,
@@ -149,7 +126,6 @@ async.each(esp, function(esp){
   });
 });
 
-
 async.each(substationUnitOverview, function(unit) {
   var substationUnits = [];
   async.each(unit.SubstationUnits, function(substationUnit) {
@@ -174,6 +150,29 @@ async.each(substationUnitOverview, function(unit) {
   u.save(function (err, u) {
     if (err) return console.error(err);
     console.log("SUCCESS => " + u.Name);
+  });
+});
+
+async.each(substationOverview, function(detail) {
+  var substations = [];
+  async.each(detail.Substations, function(substation) {
+    var so = new Substation({
+      Name: substation.Name,
+      Status: substation.Status,
+      DetailUrl: substation.DetailUrl,
+      AlarmCount: substation.AlarmCount
+    });
+    substations.push(so);
+  });
+  
+  var o = new Detail({
+    Name: detail.Name,
+    Substations : substations
+  });
+
+  o.save(function (err, o) {
+    if (err) return console.error(err);
+    console.log("SUCCESS => " + o.Name);
   });
 });
 

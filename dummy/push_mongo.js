@@ -68,7 +68,7 @@ async.each(srp, function(srp){
     CycleCounter: srp.CycleCounter,
     FR601_EstProdRateBPH: srp.FR601_EstProdRateBPH,
     FR601_Validity: srp.FR601_Validity,
-    FR602_TimeStamp: srp.Timestamp,
+    FR602_TimeStamp: srp.FR602_TimeStamp,
     FR602_ContactorStatus: srp.FR602_ContactorStatus,
     PMStatus: srp.PMStatus,
     VoltageAverage: srp.VoltageAverage,
@@ -96,7 +96,7 @@ async.each(srp, function(srp){
 
 async.each(esp, function(esp){
   var e = new Esp({
-    TimeStamp: esp.Timestamp,
+    TimeStamp: esp.TimeStamp,
     EquipmentID: esp.EquipmentID,
     ContactorStatus: esp.ContactorStatus,
     VSDStatus: esp.VSDStatus,

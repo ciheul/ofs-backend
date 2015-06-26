@@ -164,7 +164,7 @@ async.each(substationOverview, function(detail) {
     });
     substations.push(so);
   });
-  
+
   var o = new Detail({
     Name: detail.Name,
     Substations : substations

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var oilWellActiveAlarmSchema = mongoose.Schema({
+var activeAlarmSchema = mongoose.Schema({
   Date: String,
   Time: String,
   Timestamp: Date,
@@ -8,4 +8,4 @@ var oilWellActiveAlarmSchema = mongoose.Schema({
   Message: String
 });
 
-module.exports = mongoose.model('WellActiveAlarms', oilWellActiveAlarmSchema);
+module.exports = mongoose.model('ActiveAlarms', activeAlarmSchema);

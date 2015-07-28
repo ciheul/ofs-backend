@@ -6,7 +6,7 @@
 				"Name": "CB-I.01",
 				"GroupName": "Circuit Breaker",
 				"Size": "0",
-				"Status": "black",
+				"Status": "green",
 				"DetailUrl": "st-equipment",
 				"UnitId": "EPTJ\\CB-I.01",
 				"AlarmStatus": 0,

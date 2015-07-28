@@ -16,11 +16,15 @@ var SubstationEqu = require('../models/substation-equ.js');
 var ActiveAlarm = require('../models/active-alarm.js');
 var HistoricalAlarm = require('../models/historical-alarm.js');
 
+router.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Authorization, Content-Type, Accept");
+  next();
+});
 
 router.get('/', function (req, res, next) {
   res.json({ message: 'API works!' });
 });
-
 
 // #################### WELL OVERVIEW #################### //
 
@@ -31,7 +35,6 @@ router.route('/OilWellOverView')
       res.json(wells);
     });
   });
-
 
 // #################### SRP ####################  //
 
